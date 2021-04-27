@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Modal from "react-modal";
+import "./App.css";
 
 function App() {
+  let { users, setUsers } = useState([]);
+  let { currentUser, setCurrentUser } = useState("");
+  let { passwords, setPasswords } = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1>You Shall Not Password</h1>
+      <p>
+        This is a service to help store the many different passwords that you
+        might have collected over the years. If you need a new password, we can
+        generate a secure one for you! Please feel free to login or sign up
+        below.
+      </p>
+      <div className='landing-page-buttons'>
+        <button>Login</button>
+        <button>Sign Up</button>
+      </div>
     </div>
   );
 }
