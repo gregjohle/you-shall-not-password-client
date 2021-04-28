@@ -1,7 +1,7 @@
 import React from "react";
 import "./signup.css";
 
-export default function signup(props) {
+export default function Signup(props) {
   return (
     <div>
       <form>

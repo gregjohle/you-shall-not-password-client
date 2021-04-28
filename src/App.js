@@ -1,11 +1,25 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import Login from "./components/login";
+import Signup from "./components/signup";
 import "./App.css";
+
+Modal.setAppElement("#App");
 
 function App() {
   let { users, setUsers } = useState([]);
   let { currentUser, setCurrentUser } = useState("");
   let { passwords, setPasswords } = useState([]);
+  let { signupModal, setSignupModal } = useState(false);
+  let { loginModal, setLoginModal } = useState(false);
+
+  function closeSignupModal() {
+    setSignupModal(false);
+  }
+
+  function closeLoginModal() {
+    setLoginModal(false);
+  }
 
   return (
     <div className='App'>
@@ -17,9 +31,15 @@ function App() {
         below.
       </p>
       <div className='landing-page-buttons'>
-        <button>Login</button>
-        <button>Sign Up</button>
+        <button onClick={setLoginModal(true)}>Login</button>
+        <button onClick={setLoginModal(true)}>Sign Up</button>
       </div>
+      <Modal isOpen={loginModal} onRequestClose={closeLoginModal}>
+        <Login />
+      </Modal>
+      <Modal isOpen={signupModal} onRequestClose={closeSignupModal}>
+        <Signup />
+      </Modal>
     </div>
   );
 }
