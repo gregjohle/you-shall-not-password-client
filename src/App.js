@@ -4,7 +4,7 @@ import Login from "./components/login";
 import Signup from "./components/signup";
 import "./App.css";
 
-Modal.setAppElement("#App");
+// Modal.setAppElement("#App");
 
 function App() {
   let { users, setUsers } = useState([]);
@@ -13,12 +13,20 @@ function App() {
   let { signupModal, setSignupModal } = useState(false);
   let { loginModal, setLoginModal } = useState(false);
 
+  function openSignupModal() {
+    setSignupModal(!signupModal);
+  }
+
   function closeSignupModal() {
-    setSignupModal(false);
+    setSignupModal(!signupModal);
+  }
+
+  function openLoginModal() {
+    setLoginModal(!loginModal);
   }
 
   function closeLoginModal() {
-    setLoginModal(false);
+    setLoginModal(!loginModal);
   }
 
   return (
@@ -31,8 +39,8 @@ function App() {
         below.
       </p>
       <div className='landing-page-buttons'>
-        <button onClick={setLoginModal(true)}>Login</button>
-        <button onClick={setLoginModal(true)}>Sign Up</button>
+        <button onClick={() => openLoginModal()}>Login</button>
+        <button onClick={() => openSignupModal()}>Sign Up</button>
       </div>
       <Modal isOpen={loginModal} onRequestClose={closeLoginModal}>
         <Login />
