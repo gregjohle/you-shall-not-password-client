@@ -115,15 +115,24 @@ function App() {
     console.log(newUserArray);
   }
 
+  function findUserForLogin(users, userEmail) {
+    for (let i = 0; i <= users.length; i++) {
+      if (users[i].email === userEmail) {
+        return users[i];
+      }
+    }
+  }
+
   function handleLogin(users, userEmail, password) {
-    let userToValidate = users.filter(user.email === userEmail);
+    let userToValidate = findUserForLogin(users, userEmail);
 
     if (userToValidate === undefined) {
-      alert("Incorrect Email Address");
-    } else if (userToValidate.password === password) {
-      setCurrentUser(userToValidate);
+      alert("Incorrect email address.");
     } else if (userToValidate.password != password) {
       alert("Incorrect Password");
+    } else if (userToValidate.password === password) {
+      setCurrentUser(userToValidate);
+      setIsLoggedIn(true);
     }
   }
 
@@ -145,6 +154,7 @@ function App() {
             closeSignupModal={closeSignupModal}
             handleNewUser={handleNewUser}
             handleLogin={handleLogin}
+            users={users}
           />
         </Route>
       </Switch>

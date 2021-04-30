@@ -1,17 +1,22 @@
 import React from "react";
 
 export default function Login(props) {
-  let { handleLogin } = props;
+  let { handleLogin, users } = props;
 
   return (
     <>
       <form>
-        <label>Username:</label>
-        <input type='text' name='username' />
+        <label>Email:</label>
+        <input type='text' name='email' />
         <label>Password:</label>
-        <input type='text' name='password' />
+        <input type='password' name='password' />
       </form>
-      <button onClick={() => handleLogin()}>Login</button>
+      <button
+        onClick={(e) =>
+          handleLogin([...users], e.target.value.email, e.target.value.password)
+        }>
+        Login
+      </button>
     </>
   );
 }
