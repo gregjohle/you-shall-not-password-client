@@ -14,6 +14,7 @@ export default function Home(props) {
     closeLoginModal,
     closeSignupModal,
     handleNewUser,
+    handleLogin,
   } = props;
 
   return (
@@ -29,7 +30,7 @@ export default function Home(props) {
         <button onClick={(e) => openSignupModal()}>Sign Up</button>
       </div>
       <Modal isOpen={loginModal} onRequestClose={closeLoginModal}>
-        <Login />
+        <Login handleLogin={handleLogin} />
       </Modal>
       <Modal isOpen={signupModal} onRequestClose={closeSignupModal}>
         <Signup handleNewUser={handleNewUser} />
