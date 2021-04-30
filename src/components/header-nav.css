@@ -1,0 +1,21 @@
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(3, 4, 19);
+  width: 100%;
+  padding: 0 100% 2% 100%;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(113, 154, 190);
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

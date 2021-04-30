@@ -1,17 +1,28 @@
 import React, { useState } from "react";
-import Modal from "react-modal";
-import Login from "./components/login";
-import Signup from "./components/signup";
+import Nav from "./components/header-nav";
+import Home from "./components/home";
 import "./App.css";
-
-// Modal.setAppElement("#App");
+import { Switch, Route } from "react-router-dom";
 
 function App() {
-  let { users, setUsers } = useState([]);
-  let { currentUser, setCurrentUser } = useState("");
-  let { passwords, setPasswords } = useState([]);
-  let { signupModal, setSignupModal } = useState(false);
-  let { loginModal, setLoginModal } = useState(false);
+  let [users, setUsers] = useState([]);
+  let [currentUser, setCurrentUser] = useState("");
+  let [passwords, setPasswords] = useState([]);
+  let [signupModal, setSignupModal] = useState(false);
+  let [loginModal, setLoginModal] = useState(false);
+  let [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  function handleNavDisplay() {
+    let logStatus = "";
+
+    if (isLoggedIn === false) {
+      logStatus = "Login";
+    } else if (isLoggedIn === true) {
+      logStatus = "Logout";
+    }
+    console.log(logStatus);
+    return logStatus;
+  }
 
   function openSignupModal() {
     setSignupModal(!signupModal);
@@ -29,25 +40,30 @@ function App() {
     setLoginModal(!loginModal);
   }
 
+  function handleNewUser(userInfo) {
+    let userArray = [...users];
+    let newUserArray = userArray.push(userInfo);
+
+    setUsers(newUserArray);
+    console.log(newUserArray);
+  }
+
   return (
     <div className='App'>
-      <h1>You Shall Not Password</h1>
-      <p>
-        This is a service to help store the many different passwords that you
-        might have collected over the years. If you need a new password, we can
-        generate a secure one for you! Please feel free to login or sign up
-        below.
-      </p>
-      <div className='landing-page-buttons'>
-        <button onClick={() => openLoginModal()}>Login</button>
-        <button onClick={() => openSignupModal()}>Sign Up</button>
-      </div>
-      <Modal isOpen={loginModal} onRequestClose={closeLoginModal}>
-        <Login />
-      </Modal>
-      <Modal isOpen={signupModal} onRequestClose={closeSignupModal}>
-        <Signup />
-      </Modal>
+      <Nav logStatus={handleNavDisplay} />
+      <Switch>
+        <Route path='/'>
+          <Home
+            openLoginModal={openLoginModal}
+            openSignupModal={openSignupModal}
+            loginModal={loginModal}
+            signupModal={signupModal}
+            closeLoginModal={closeLoginModal}
+            closeSignupModal={closeSignupModal}
+            handleNewUser={handleNewUser}
+          />
+        </Route>
+      </Switch>
     </div>
   );
 }
