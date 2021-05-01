@@ -85,7 +85,6 @@ function App() {
     } else if (isLoggedIn === true) {
       logStatus = "Logout";
     }
-    console.log(logStatus);
     return logStatus;
   }
 
@@ -116,6 +115,8 @@ function App() {
   }
 
   function findUserForLogin(users, userEmail) {
+    // console.log(users);
+
     for (let i = 0; i <= users.length; i++) {
       if (users[i].email === userEmail) {
         return users[i];
@@ -124,16 +125,18 @@ function App() {
   }
 
   function handleLogin(users, userEmail, password) {
-    let userToValidate = findUserForLogin(users, userEmail);
+    let userToValidate = findUserForLogin([...users], userEmail);
 
-    if (userToValidate === undefined) {
-      alert("Incorrect email address.");
-    } else if (userToValidate.password != password) {
-      alert("Incorrect Password");
-    } else if (userToValidate.password === password) {
-      setCurrentUser(userToValidate);
-      setIsLoggedIn(true);
-    }
+    console.log(userToValidate);
+
+    // if (userToValidate === undefined) {
+    //   alert("Incorrect email address.");
+    // } else if (userToValidate.password != password) {
+    //   alert("Incorrect Password");
+    // } else if (userToValidate.password === password) {
+    //   setCurrentUser(userToValidate);
+    //   setIsLoggedIn(true);
+    // }
   }
 
   return (
