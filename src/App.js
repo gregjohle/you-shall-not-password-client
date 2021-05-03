@@ -75,7 +75,12 @@ function App() {
   ]);
   let [signupModal, setSignupModal] = useState(false);
   let [loginModal, setLoginModal] = useState(false);
-  let [isLoggedIn, setIsLoggedIn] = useState(true);
+  let [isLoggedIn, setIsLoggedIn] = useState(false);
+  let [loginUserEmail, setLoginUserEmail] = useState("");
+  let [loginUserPassword, setLoginUserPassword] = useState("");
+  let [verifyPassword, setVerifyPassword] = useState("");
+  let [userPhoneNumber, setUserPhoneNumber] = useState("");
+  let [userName, setUserName] = useState("");
 
   function handleNavDisplay() {
     let logStatus = "";
@@ -104,39 +109,68 @@ function App() {
     setLoginModal(!loginModal);
   }
 
-  function handleNewUser(userInfo) {
-    setIsLoggedIn(true);
-
-    let userArray = [...users];
-    let newUserArray = userArray.push(userInfo);
-
-    setUsers(newUserArray);
-    console.log(newUserArray);
-  }
-
   function findUserForLogin(users, userEmail) {
-    // console.log(users);
-
-    for (let i = 0; i <= users.length; i++) {
-      if (users[i].email === userEmail) {
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].email === userEmail.toLowerCase()) {
         return users[i];
       }
     }
   }
 
-  function handleLogin(users, userEmail, password) {
+  function handleNewUser(
+    users,
+    userName,
+    userEmail,
+    userPassword,
+    userPhoneNumber
+  ) {
+    let newUserId = users.length + 1;
+    let newUserObject = {
+      id: newUserId,
+      name: userName,
+      email: userEmail.toLowerCase(),
+      password: userPassword,
+      phone_number: userPhoneNumber,
+    };
+
+    let checkForExistingUser = findUserForLogin([...users], userEmail);
+
+    if (checkForExistingUser === undefined) {
+      setIsLoggedIn(true);
+      setUsers(users.concat(newUserObject));
+      setCurrentUser(newUserObject);
+      setSignupModal(false);
+      console.log(newUserObject);
+    } else if (checkForExistingUser !== undefined) {
+      alert("There is already an account associated with this email.");
+    }
+  }
+
+  function handleLogin(users, userEmail, userPassword) {
     let userToValidate = findUserForLogin([...users], userEmail);
 
-    console.log(userToValidate);
+    if (userToValidate === undefined) {
+      alert("Incorrect email address.");
+    } else if (userToValidate.password !== userPassword) {
+      alert("Incorrect Password");
+    } else if (userToValidate.password === userPassword) {
+      setCurrentUser(userToValidate);
+      setIsLoggedIn(true);
+      setLoginModal(false);
+    }
+  }
 
-    // if (userToValidate === undefined) {
-    //   alert("Incorrect email address.");
-    // } else if (userToValidate.password != password) {
-    //   alert("Incorrect Password");
-    // } else if (userToValidate.password === password) {
-    //   setCurrentUser(userToValidate);
-    //   setIsLoggedIn(true);
-    // }
+  function handleNavLoginLogout() {
+    if (isLoggedIn === false) {
+      setLoginModal(true);
+    } else if (isLoggedIn === true) {
+      setCurrentUser({});
+      setIsLoggedIn(false);
+      setLoginUserEmail("");
+      setLoginUserPassword("");
+      setVerifyPassword("");
+      setUserPhoneNumber("");
+    }
   }
 
   return (
@@ -145,6 +179,7 @@ function App() {
         logStatus={handleNavDisplay}
         currentUser={currentUser}
         isLoggedIn={isLoggedIn}
+        handleNavLoginLogout={handleNavLoginLogout}
       />
       <Switch>
         <Route path='/'>
@@ -158,6 +193,16 @@ function App() {
             handleNewUser={handleNewUser}
             handleLogin={handleLogin}
             users={users}
+            loginEmail={loginUserEmail}
+            setLoginEmail={setLoginUserEmail}
+            loginPassword={loginUserPassword}
+            setLoginPassword={setLoginUserPassword}
+            verifyPassword={verifyPassword}
+            setVerifyPassword={setVerifyPassword}
+            userPhoneNumber={userPhoneNumber}
+            setUserPhoneNumber={setUserPhoneNumber}
+            userName={userName}
+            setUserName={setUserName}
           />
         </Route>
       </Switch>

@@ -2,6 +2,7 @@ import React from "react";
 import Login from "./login";
 import Signup from "./signup";
 import Modal from "react-modal";
+import "./home.css";
 
 Modal.setAppElement("#root");
 
@@ -16,10 +17,20 @@ export default function Home(props) {
     handleNewUser,
     handleLogin,
     users,
+    loginEmail,
+    setLoginEmail,
+    loginPassword,
+    setLoginPassword,
+    verifyPassword,
+    setVerifyPassword,
+    userPhoneNumber,
+    setUserPhoneNumber,
+    userName,
+    setUserName,
   } = props;
 
   return (
-    <div>
+    <div className='home'>
       <p>
         This is a service to help store the many different passwords that you
         might have collected over the years. If you need a new password, we can
@@ -31,10 +42,30 @@ export default function Home(props) {
         <button onClick={(e) => openSignupModal()}>Sign Up</button>
       </div>
       <Modal isOpen={loginModal} onRequestClose={closeLoginModal}>
-        <Login handleLogin={handleLogin} users={users} />
+        <Login
+          handleLogin={handleLogin}
+          users={users}
+          loginEmail={loginEmail}
+          setLoginEmail={setLoginEmail}
+          loginPassword={loginPassword}
+          setLoginPassword={setLoginPassword}
+        />
       </Modal>
       <Modal isOpen={signupModal} onRequestClose={closeSignupModal}>
-        <Signup handleNewUser={handleNewUser} />
+        <Signup
+          handleNewUser={handleNewUser}
+          users={users}
+          loginEmail={loginEmail}
+          setLoginEmail={setLoginEmail}
+          loginPassword={loginPassword}
+          setLoginPassword={setLoginPassword}
+          verifyPassword={verifyPassword}
+          setVerifyPassword={setVerifyPassword}
+          userPhoneNumber={userPhoneNumber}
+          setUserPhoneNumber={setUserPhoneNumber}
+          userName={userName}
+          setUserName={setUserName}
+        />
       </Modal>
     </div>
   );

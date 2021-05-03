@@ -1,22 +1,55 @@
 import React from "react";
+import "./login.css";
 
 export default function Login(props) {
-  let { handleLogin, users } = props;
+  let {
+    handleLogin,
+    users,
+    loginEmail,
+    setLoginEmail,
+    loginPassword,
+    setLoginPassword,
+  } = props;
+
+  function handleEmail(event) {
+    setLoginEmail(event.target.value);
+  }
+
+  function handlePassword(event) {
+    setLoginPassword(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    handleLogin([...users], loginEmail, loginPassword);
+  }
 
   return (
     <>
-      <form>
-        <label>Email:</label>
-        <input type='text' name='email' />
-        <label>Password:</label>
-        <input type='password' name='password' />
+      <h2>Login</h2>
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <div>
+          <label>Email:</label>
+          <input
+            type='text'
+            name='email'
+            value={loginEmail}
+            onChange={(e) => handleEmail(e)}
+            required
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type='password'
+            name='password'
+            value={loginPassword}
+            onChange={(e) => handlePassword(e)}
+            required
+          />
+        </div>
+        <button type='submit'>Login</button>
       </form>
-      <button
-        onClick={(e) =>
-          handleLogin([...users], e.target.value.email, e.target.value.password)
-        }>
-        Login
-      </button>
     </>
   );
 }

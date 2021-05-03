@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./header-nav.css";
 
 export default function Nav(props) {
-  let { logStatus, currentUser, isLoggedIn } = props;
+  let { logStatus, currentUser, isLoggedIn, handleNavLoginLogout } = props;
 
   function welcomeUser() {
     let greeting = "";
@@ -27,7 +27,7 @@ export default function Nav(props) {
           <Link to='/about'>About</Link>
         </li>
         <li>
-          <Link to='/' onClick=''>
+          <Link to='/' onClick={(e) => handleNavLoginLogout(e)}>
             {logStatus()}
           </Link>
         </li>

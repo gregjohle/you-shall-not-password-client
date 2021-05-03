@@ -1,0 +1,10 @@
+.home {
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 70%;
+  text-align: center;
+  margin: 2% auto 1% auto;
+}
+
+.home p {
+  color: rgb(3, 0, 56);
+}
