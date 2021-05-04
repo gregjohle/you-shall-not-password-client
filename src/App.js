@@ -3,6 +3,7 @@ import Nav from "./components/header-nav";
 import Home from "./components/home";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
+import PasswordsList from "./components/passwords-list";
 
 function App() {
   let [users, setUsers] = useState([
@@ -173,6 +174,42 @@ function App() {
     }
   }
 
+  let homePage = () => {
+    if (isLoggedIn === false) {
+      return (
+        <Home
+          openLoginModal={openLoginModal}
+          openSignupModal={openSignupModal}
+          loginModal={loginModal}
+          signupModal={signupModal}
+          closeLoginModal={closeLoginModal}
+          closeSignupModal={closeSignupModal}
+          handleNewUser={handleNewUser}
+          handleLogin={handleLogin}
+          users={users}
+          loginEmail={loginUserEmail}
+          setLoginEmail={setLoginUserEmail}
+          loginPassword={loginUserPassword}
+          setLoginPassword={setLoginUserPassword}
+          verifyPassword={verifyPassword}
+          setVerifyPassword={setVerifyPassword}
+          userPhoneNumber={userPhoneNumber}
+          setUserPhoneNumber={setUserPhoneNumber}
+          userName={userName}
+          setUserName={setUserName}
+        />
+      );
+    } else if (isLoggedIn === true) {
+      return (
+        <PasswordsList
+          currentUser={currentUser}
+          passwords={passwords}
+          addperson={setPasswords}
+        />
+      );
+    }
+  };
+
   return (
     <div className='App'>
       <Nav
@@ -182,29 +219,7 @@ function App() {
         handleNavLoginLogout={handleNavLoginLogout}
       />
       <Switch>
-        <Route path='/'>
-          <Home
-            openLoginModal={openLoginModal}
-            openSignupModal={openSignupModal}
-            loginModal={loginModal}
-            signupModal={signupModal}
-            closeLoginModal={closeLoginModal}
-            closeSignupModal={closeSignupModal}
-            handleNewUser={handleNewUser}
-            handleLogin={handleLogin}
-            users={users}
-            loginEmail={loginUserEmail}
-            setLoginEmail={setLoginUserEmail}
-            loginPassword={loginUserPassword}
-            setLoginPassword={setLoginUserPassword}
-            verifyPassword={verifyPassword}
-            setVerifyPassword={setVerifyPassword}
-            userPhoneNumber={userPhoneNumber}
-            setUserPhoneNumber={setUserPhoneNumber}
-            userName={userName}
-            setUserName={setUserName}
-          />
-        </Route>
+        <Route path='/'>{homePage}</Route>
       </Switch>
     </div>
   );
