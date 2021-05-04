@@ -82,6 +82,11 @@ function App() {
   let [verifyPassword, setVerifyPassword] = useState("");
   let [userPhoneNumber, setUserPhoneNumber] = useState("");
   let [userName, setUserName] = useState("");
+  let [passwordSearch, setPasswordSearch] = useState("");
+  let [addPasswordModal, setAddPasswordModal] = useState(false);
+  let [addSite, setAddSite] = useState("");
+  let [addUsername, setAddUsername] = useState("");
+  let [addNewPassword, setAddNewPassword] = useState("");
 
   function handleNavDisplay() {
     let logStatus = "";
@@ -174,6 +179,21 @@ function App() {
     }
   }
 
+  function addPasswordToArray(passwords, userId, site, username, password) {
+    let newPasswordID = passwords.length + 1;
+
+    let newPasswordObject = {
+      id: newPasswordID,
+      user_id: userId,
+      site: site,
+      username: username,
+      password: password,
+    };
+
+    setPasswords(passwords.concat(newPasswordObject));
+    setAddPasswordModal(false);
+  }
+
   let homePage = () => {
     if (isLoggedIn === false) {
       return (
@@ -204,7 +224,18 @@ function App() {
         <PasswordsList
           currentUser={currentUser}
           passwords={passwords}
-          addperson={setPasswords}
+          addPassword={setPasswords}
+          passwordSearch={passwordSearch}
+          setPasswordSearch={setPasswordSearch}
+          addPasswordModal={addPasswordModal}
+          setAddPasswordModal={setAddPasswordModal}
+          addSite={addSite}
+          setAddSite={setAddSite}
+          addUsername={addUsername}
+          setAddUsername={setAddUsername}
+          addNewPassword={addNewPassword}
+          setAddNewPassword={setAddNewPassword}
+          addPasswordToArray={addPasswordToArray}
         />
       );
     }

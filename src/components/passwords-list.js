@@ -4,11 +4,34 @@ import PasswordListControls from "./password-list-controls";
 import "./password-list.css";
 
 export default function PasswordsList(props) {
-  let { currentUser, passwords, addPassword } = props;
+  let {
+    currentUser,
+    passwords,
+    addPassword,
+    passwordSearch,
+    setPasswordSearch,
+    addPasswordModal,
+    setAddPasswordModal,
+    addSite,
+    setAddSite,
+    addUsername,
+    setAddUsername,
+    addNewPassword,
+    setAddNewPassword,
+    addPasswordToArray,
+  } = props;
 
   let userPasswords = passwords.filter(
     (password) => password.user_id === currentUser.id
   );
+
+  let searchUserPasswords = new RegExp(passwordSearch, "i");
+
+  if (passwordSearch) {
+    userPasswords = userPasswords.filter((password) =>
+      searchUserPasswords.test(password.site)
+    );
+  }
 
   let passwordsList = userPasswords.map((password) => (
     <PasswordListItem
@@ -25,6 +48,18 @@ export default function PasswordsList(props) {
         userPasswords={userPasswords}
         addPassword={addPassword}
         currentUser={currentUser}
+        passwordSearch={passwordSearch}
+        setPasswordSearch={setPasswordSearch}
+        addPasswordModal={addPasswordModal}
+        setAddPasswordModal={setAddPasswordModal}
+        addSite={addSite}
+        setAddSite={setAddSite}
+        addUsername={addUsername}
+        setAddUsername={setAddUsername}
+        addNewPassword={addNewPassword}
+        setAddNewPassword={setAddNewPassword}
+        addPasswordToArray={addPasswordToArray}
+        passwords={passwords}
       />
       <ul>{passwordsList}</ul>
     </div>
