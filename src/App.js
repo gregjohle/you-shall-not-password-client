@@ -153,17 +153,28 @@ function App() {
   }
 
   function handleLogin(users, userEmail, userPassword) {
-    let userToValidate = findUserForLogin([...users], userEmail);
-
-    if (userToValidate === undefined) {
-      alert("Incorrect email address.");
-    } else if (userToValidate.password !== userPassword) {
-      alert("Incorrect Password");
-    } else if (userToValidate.password === userPassword) {
-      setCurrentUser(userToValidate);
+    fetch("https://evening-dusk-89744.herokuapp.com/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      // setCurrentUser(res.user);
       setIsLoggedIn(true);
       setLoginModal(false);
-    }
+    });
+
+    // let userToValidate = findUserForLogin([...users], userEmail);
+
+    // if (userToValidate === undefined) {
+    //   alert("Incorrect email address.");
+    // } else if (userToValidate.password !== userPassword) {
+    //   alert("Incorrect Password");
+    // } else if (userToValidate.password === userPassword) {
+    //   setCurrentUser(userToValidate);
+    //   setIsLoggedIn(true);
+    //   setLoginModal(false);
+    // }
   }
 
   function handleNavLoginLogout() {
