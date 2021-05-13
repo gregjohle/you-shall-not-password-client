@@ -4,6 +4,7 @@ import Home from "./components/home";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import PasswordsList from "./components/passwords-list";
+import env from "react-dotenv";
 
 function App() {
   let [users, setUsers] = useState([
@@ -115,21 +116,7 @@ function App() {
     setLoginModal(!loginModal);
   }
 
-  function findUserForLogin(users, userEmail) {
-    for (let i = 0; i < users.length; i++) {
-      if (users[i].email === userEmail.toLowerCase()) {
-        return users[i];
-      }
-    }
-  }
-
-  function handleNewUser(
-    users,
-    userName,
-    userEmail,
-    userPassword,
-    userPhoneNumber
-  ) {
+  function handleNewUser(userName, userEmail, userPassword, userPhoneNumber) {
     let newUserId = users.length + 1;
     let newUserObject = {
       id: newUserId,
@@ -139,28 +126,28 @@ function App() {
       phone_number: userPhoneNumber,
     };
 
-    let checkForExistingUser = findUserForLogin([...users], userEmail);
-
-    if (checkForExistingUser === undefined) {
-      setIsLoggedIn(true);
-      setUsers(users.concat(newUserObject));
-      setCurrentUser(newUserObject);
-      setSignupModal(false);
-      console.log(newUserObject);
-    } else if (checkForExistingUser !== undefined) {
-      alert("There is already an account associated with this email.");
-    }
+    fetch(env.REGISTER_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUserObject),
+    }).then((res) => {
+      if (res.ok) {
+        setSignupModal(!signupModal);
+      }
+    });
   }
 
   function handleLogin(users, userEmail, userPassword) {
-    fetch("http://localhost:8000/api/users", {
+    fetch(env.LOGIN_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
     }).then((res) => {
       if (res.ok) {
-        // setCurrentUser(res.user);
+        setCurrentUser(res.user);
         console.log(res);
         setIsLoggedIn(true);
         setLoginModal(false);
