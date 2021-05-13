@@ -153,15 +153,18 @@ function App() {
   }
 
   function handleLogin(users, userEmail, userPassword) {
-    fetch("https://evening-dusk-89744.herokuapp.com/api/users", {
+    fetch("http://localhost:8000/api/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
     }).then((res) => {
-      // setCurrentUser(res.user);
-      setIsLoggedIn(true);
-      setLoginModal(false);
+      if (res.ok) {
+        // setCurrentUser(res.user);
+        console.log(res);
+        setIsLoggedIn(true);
+        setLoginModal(false);
+      }
     });
 
     // let userToValidate = findUserForLogin([...users], userEmail);
