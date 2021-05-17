@@ -35,7 +35,7 @@ export default function Signup(props) {
       alert("Passwords do not match");
     } else if (loginPassword === verifyPassword) {
       handleNewUser(
-        [...users],
+        // [...users],
         userName,
         loginEmail,
         loginPassword,

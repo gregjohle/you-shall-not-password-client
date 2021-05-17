@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Login from "./login";
 import Signup from "./signup";
 import Modal from "react-modal";
@@ -27,7 +27,12 @@ export default function Home(props) {
     setUserPhoneNumber,
     userName,
     setUserName,
+    checkForSession,
   } = props;
+
+  useEffect(() => {
+    checkForSession();
+  }, []);
 
   return (
     <div className='home'>

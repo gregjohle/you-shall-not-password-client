@@ -89,6 +89,27 @@ function App() {
   let [addUsername, setAddUsername] = useState("");
   let [addNewPassword, setAddNewPassword] = useState("");
 
+  function checkForSession() {
+    fetch("http://localhost:8000/api/users/")
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          return response.json();
+        } else if (response.status === 401) {
+          throw new Error("Unauthorized");
+        }
+        throw new Error(response.statusText);
+      })
+      .then((responseJson) => {
+        console.log(responseJson);
+        setIsLoggedIn(true);
+        setCurrentUser(responseJson);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }
+
   function handleNavDisplay() {
     let logStatus = "";
 
@@ -117,16 +138,16 @@ function App() {
   }
 
   function handleNewUser(userName, userEmail, userPassword, userPhoneNumber) {
-    let newUserId = users.length + 1;
+    // let newUserId = users.length + 1;
     let newUserObject = {
-      id: newUserId,
+      // id: newUserId,
       name: userName,
       email: userEmail.toLowerCase(),
       password: userPassword,
       phone_number: userPhoneNumber,
     };
-
-    fetch(env.REGISTER_URL, {
+    console.log(newUserObject);
+    fetch("http://localhost:8000/api/users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -135,24 +156,50 @@ function App() {
     }).then((res) => {
       if (res.ok) {
         setSignupModal(!signupModal);
+      } else {
+        console.log(res);
       }
     });
   }
 
   function handleLogin(users, userEmail, userPassword) {
-    fetch(env.LOGIN_URL, {
-      method: "POST",
+    fetch("http://localhost:8000/api/users/login", {
+      method: "post",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:3000",
       },
-    }).then((res) => {
-      if (res.ok) {
-        setCurrentUser(res.user);
-        console.log(res);
+      body: JSON.stringify({
+        email: userEmail,
+        password: userPassword,
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(response.statusText);
+      })
+      .then((responseJson) => {
+        setCurrentUser(responseJson);
+        setSignupModal(false);
         setIsLoggedIn(true);
-        setLoginModal(false);
-      }
-    });
+      })
+      .catch((err) => {
+        alert(err);
+      });
+    // .then(
+    //   fetch("http://localhost:8000/api/users/login", {
+    //     method: "GET",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       "Access-Control-Allow-Origin": "http://localhost:3000",
+    //     },
+    //   })
+    // )
+    // .then((res) => {
+    //   console.log(res);
+    // });
 
     // let userToValidate = findUserForLogin([...users], userEmail);
 
@@ -218,6 +265,7 @@ function App() {
           setUserPhoneNumber={setUserPhoneNumber}
           userName={userName}
           setUserName={setUserName}
+          checkForSession={checkForSession}
         />
       );
     } else if (isLoggedIn === true) {
