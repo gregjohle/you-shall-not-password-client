@@ -4,7 +4,6 @@ import "./signup.css";
 export default function Signup(props) {
   let {
     handleNewUser,
-    users,
     loginEmail,
     setLoginEmail,
     loginPassword,
@@ -34,13 +33,7 @@ export default function Signup(props) {
     if (loginPassword !== verifyPassword) {
       alert("Passwords do not match");
     } else if (loginPassword === verifyPassword) {
-      handleNewUser(
-        // [...users],
-        userName,
-        loginEmail,
-        loginPassword,
-        userPhoneNumber
-      );
+      handleNewUser(userName, loginEmail, loginPassword, userPhoneNumber);
     }
   }
 

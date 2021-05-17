@@ -90,9 +90,14 @@ function App() {
   let [addNewPassword, setAddNewPassword] = useState("");
 
   function checkForSession() {
-    fetch("http://localhost:8000/api/users/")
+    fetch("http://localhost:8000/api/users/", {
+      credentials: "same-origin",
+      headers: {
+        "Access-Control-Allow-Origin": true,
+      },
+    })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.status === 200) {
           return response.json();
         } else if (response.status === 401) {
@@ -138,9 +143,7 @@ function App() {
   }
 
   function handleNewUser(userName, userEmail, userPassword, userPhoneNumber) {
-    // let newUserId = users.length + 1;
     let newUserObject = {
-      // id: newUserId,
       name: userName,
       email: userEmail.toLowerCase(),
       password: userPassword,
@@ -169,6 +172,7 @@ function App() {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "http://localhost:3000",
       },
+      credentials: "same-origin",
       body: JSON.stringify({
         email: userEmail,
         password: userPassword,
@@ -242,6 +246,28 @@ function App() {
     setAddPasswordModal(false);
   }
 
+  function getAllPasswords() {
+    fetch("http://localhost:8000/api/passwords/", {
+      credentials: "same-origin",
+      headers: {
+        "Access-Control-Allow-Origin": "true",
+      },
+    })
+      .then((response) => {
+        console.log(response);
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(response.statusText);
+      })
+      .then((responseJson) => {
+        setPasswords(responseJson);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
+
   let homePage = () => {
     if (isLoggedIn === false) {
       return (
@@ -285,6 +311,7 @@ function App() {
           addNewPassword={addNewPassword}
           setAddNewPassword={setAddNewPassword}
           addPasswordToArray={addPasswordToArray}
+          getAllPasswords={getAllPasswords}
         />
       );
     }

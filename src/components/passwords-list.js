@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PasswordListItem from "./password-list-item";
 import PasswordListControls from "./password-list-controls";
 import "./password-list.css";
@@ -19,7 +19,12 @@ export default function PasswordsList(props) {
     addNewPassword,
     setAddNewPassword,
     addPasswordToArray,
+    getAllPasswords,
   } = props;
+
+  useEffect(() => {
+    getAllPasswords();
+  }, []);
 
   let userPasswords = passwords.filter(
     (password) => password.user_id === currentUser.id
