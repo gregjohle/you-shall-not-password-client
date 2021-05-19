@@ -7,74 +7,8 @@ import PasswordsList from "./components/passwords-list";
 import env from "react-dotenv";
 
 function App() {
-  let [users, setUsers] = useState([
-    {
-      id: 1,
-      name: "Gandalf the Grey",
-      email: "gandalf@email.com",
-      password: "YouShallNotPass!",
-      phone_number: "1234567",
-    },
-    {
-      id: 2,
-      name: "Frodo Baggins",
-      email: "frodo@shire.net",
-      password: "SamWasTheHero",
-      phone_number: "",
-    },
-    {
-      id: 3,
-      name: "Gollum",
-      email: "gollum@gollum.gollum",
-      password: "MyPrecious",
-      phone_number: "8675309",
-    },
-  ]);
   let [currentUser, setCurrentUser] = useState({});
-  let [passwords, setPasswords] = useState([
-    {
-      id: 1,
-      user_id: 1,
-      site: "Google",
-      username: "gandygrey",
-      password: "Shadowfax",
-    },
-    {
-      id: 2,
-      user_id: 1,
-      site: "Pipeweed Depot",
-      username: "maiar",
-      password: "Istari",
-    },
-    {
-      id: 3,
-      user_id: 2,
-      site: "Shire Connect",
-      username: "BestNephew",
-      password: "UncleBilbo",
-    },
-    {
-      id: 4,
-      user_id: 2,
-      site: "Shire Community Calandar",
-      username: "FrodoBaggs",
-      password: "EleventyOneIsNotANumber",
-    },
-    {
-      id: 5,
-      user_id: 3,
-      site: "Sushi Grade Fish Warehouse",
-      username: "gollum",
-      password: "MyPriceous",
-    },
-    {
-      id: 6,
-      user_id: 3,
-      site: "Caves Rock",
-      username: "gollum",
-      password: "MyPrecious",
-    },
-  ]);
+  let [passwords, setPasswords] = useState([]);
   let [signupModal, setSignupModal] = useState(false);
   let [loginModal, setLoginModal] = useState(false);
   let [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -88,32 +22,6 @@ function App() {
   let [addSite, setAddSite] = useState("");
   let [addUsername, setAddUsername] = useState("");
   let [addNewPassword, setAddNewPassword] = useState("");
-
-  function checkForSession() {
-    fetch("http://localhost:8000/api/users/", {
-      credentials: "same-origin",
-      headers: {
-        "Access-Control-Allow-Origin": true,
-      },
-    })
-      .then((response) => {
-        // console.log(response);
-        if (response.status === 200) {
-          return response.json();
-        } else if (response.status === 401) {
-          throw new Error("Unauthorized");
-        }
-        throw new Error(response.statusText);
-      })
-      .then((responseJson) => {
-        console.log(responseJson);
-        setIsLoggedIn(true);
-        setCurrentUser(responseJson);
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  }
 
   function handleNavDisplay() {
     let logStatus = "";
@@ -165,18 +73,17 @@ function App() {
     });
   }
 
-  function handleLogin(users, userEmail, userPassword) {
+  function handleLogin(userEmail, userPassword) {
+    let loginInfo = {
+      email: userEmail,
+      password: userPassword,
+    };
     fetch("http://localhost:8000/api/users/login", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:3000",
       },
-      credentials: "same-origin",
-      body: JSON.stringify({
-        email: userEmail,
-        password: userPassword,
-      }),
+      body: JSON.stringify(loginInfo),
     })
       .then((response) => {
         if (response.ok) {
@@ -185,37 +92,19 @@ function App() {
         throw new Error(response.statusText);
       })
       .then((responseJson) => {
-        setCurrentUser(responseJson);
-        setSignupModal(false);
+        let currentUserObj = {
+          email: userEmail,
+          password: userPassword,
+          name: responseJson.name,
+          id: responseJson.id,
+        };
+        setCurrentUser(currentUserObj);
+        setLoginModal(false);
         setIsLoggedIn(true);
       })
       .catch((err) => {
-        alert(err);
+        console.log(err);
       });
-    // .then(
-    //   fetch("http://localhost:8000/api/users/login", {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "Access-Control-Allow-Origin": "http://localhost:3000",
-    //     },
-    //   })
-    // )
-    // .then((res) => {
-    //   console.log(res);
-    // });
-
-    // let userToValidate = findUserForLogin([...users], userEmail);
-
-    // if (userToValidate === undefined) {
-    //   alert("Incorrect email address.");
-    // } else if (userToValidate.password !== userPassword) {
-    //   alert("Incorrect Password");
-    // } else if (userToValidate.password === userPassword) {
-    //   setCurrentUser(userToValidate);
-    //   setIsLoggedIn(true);
-    //   setLoginModal(false);
-    // }
   }
 
   function handleNavLoginLogout() {
@@ -231,37 +120,52 @@ function App() {
     }
   }
 
-  function addPasswordToArray(passwords, userId, site, username, password) {
-    let newPasswordID = passwords.length + 1;
-
+  function addPasswordToArray(passwords, site, username, password) {
     let newPasswordObject = {
-      id: newPasswordID,
-      user_id: userId,
+      user_id: currentUser.id,
       site: site,
       username: username,
       password: password,
     };
 
-    setPasswords(passwords.concat(newPasswordObject));
-    setAddPasswordModal(false);
-  }
-
-  function getAllPasswords() {
-    fetch("http://localhost:8000/api/passwords/", {
-      credentials: "same-origin",
+    fetch("http://localhost:8000/api/passwords/add", {
+      method: "POST",
       headers: {
         "Access-Control-Allow-Origin": "true",
       },
+      body: JSON.stringify({
+        email: currentUser.email,
+        password: currentUser.password,
+        newPassword: newPasswordObject,
+      }),
+    }).then((response) => {
+      if (response.ok) {
+        setAddPasswordModal(false);
+      }
+      throw new Error(response.statusText);
+    });
+  }
+
+  function getAllPasswords(userId) {
+    fetch("http://localhost:8000/api/passwords/", {
+      method: "POST",
+      headers: {
+        "Access-Control-Allow-Origin": "true",
+      },
+      body: JSON.stringify({
+        user_id: userId,
+      }),
     })
       .then((response) => {
-        console.log(response);
         if (response.ok) {
           return response.json();
+          // console.log(response);
         }
         throw new Error(response.statusText);
       })
       .then((responseJson) => {
-        setPasswords(responseJson);
+        console.log(responseJson);
+        // setPasswords(responseJson);
       })
       .catch((err) => {
         alert(err);
@@ -280,7 +184,6 @@ function App() {
           closeSignupModal={closeSignupModal}
           handleNewUser={handleNewUser}
           handleLogin={handleLogin}
-          users={users}
           loginEmail={loginUserEmail}
           setLoginEmail={setLoginUserEmail}
           loginPassword={loginUserPassword}
@@ -291,7 +194,6 @@ function App() {
           setUserPhoneNumber={setUserPhoneNumber}
           userName={userName}
           setUserName={setUserName}
-          checkForSession={checkForSession}
         />
       );
     } else if (isLoggedIn === true) {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Login from "./login";
 import Signup from "./signup";
 import Modal from "react-modal";
@@ -16,7 +16,6 @@ export default function Home(props) {
     closeSignupModal,
     handleNewUser,
     handleLogin,
-    users,
     loginEmail,
     setLoginEmail,
     loginPassword,
@@ -27,12 +26,7 @@ export default function Home(props) {
     setUserPhoneNumber,
     userName,
     setUserName,
-    checkForSession,
   } = props;
-
-  useEffect(() => {
-    checkForSession();
-  }, []);
 
   return (
     <div className='home'>
@@ -49,7 +43,6 @@ export default function Home(props) {
       <Modal isOpen={loginModal} onRequestClose={closeLoginModal}>
         <Login
           handleLogin={handleLogin}
-          users={users}
           loginEmail={loginEmail}
           setLoginEmail={setLoginEmail}
           loginPassword={loginPassword}
@@ -59,7 +52,6 @@ export default function Home(props) {
       <Modal isOpen={signupModal} onRequestClose={closeSignupModal}>
         <Signup
           handleNewUser={handleNewUser}
-          users={users}
           loginEmail={loginEmail}
           setLoginEmail={setLoginEmail}
           loginPassword={loginPassword}

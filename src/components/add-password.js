@@ -26,16 +26,9 @@ export default function AddPassword(props) {
     setAddNewPassword(event.target.value);
   }
 
-  function handlePasswordSubmit(
-    event,
-    passwords,
-    userId,
-    site,
-    username,
-    password
-  ) {
+  function handlePasswordSubmit(event, passwords, site, username, password) {
     event.preventDefault();
-    addPasswordToArray(passwords, userId, site, username, password);
+    addPasswordToArray(passwords, site, username, password);
   }
 
   function handleCancel(event) {

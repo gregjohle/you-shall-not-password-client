@@ -23,12 +23,12 @@ export default function PasswordsList(props) {
   } = props;
 
   useEffect(() => {
-    getAllPasswords();
-  }, []);
+    getAllPasswords(currentUser.id);
+  }, [setAddPasswordModal]);
 
-  let userPasswords = passwords.filter(
-    (password) => password.user_id === currentUser.id
-  );
+  // console.log(passwords);
+
+  let userPasswords = passwords;
 
   let searchUserPasswords = new RegExp(passwordSearch, "i");
 

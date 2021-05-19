@@ -4,7 +4,6 @@ import "./login.css";
 export default function Login(props) {
   let {
     handleLogin,
-    users,
     loginEmail,
     setLoginEmail,
     loginPassword,
@@ -21,7 +20,7 @@ export default function Login(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    handleLogin([...users], loginEmail, loginPassword);
+    handleLogin(loginEmail, loginPassword);
   }
 
   return (
