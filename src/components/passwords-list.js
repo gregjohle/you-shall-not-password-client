@@ -22,6 +22,8 @@ export default function PasswordsList(props) {
     getAllPasswords,
   } = props;
 
+  // There is a warning about adding getAllPasswords to the dependency array here.
+  //That makes this repeated call while the component is mounted. I only want it to run once, or when a password is added.
   useEffect(() => {
     getAllPasswords();
   }, [addPasswordToArray]);
