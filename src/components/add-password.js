@@ -28,7 +28,6 @@ export default function AddPassword(props) {
 
   function handlePasswordSubmit(event) {
     event.preventDefault();
-    console.log(addNewPassword);
     addPasswordToArray(addSite, addUsername, addNewPassword);
   }
 

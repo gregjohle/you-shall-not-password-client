@@ -149,7 +149,7 @@ function App() {
         throw new Error(response.statusText);
       })
       .catch((error) => {
-        console.log(error);
+        alert(error);
       });
   }
 
