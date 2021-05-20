@@ -57,20 +57,23 @@ function App() {
       password: userPassword,
       phone_number: userPhoneNumber,
     };
-    console.log(newUserObject);
     fetch(env.REGISTER_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newUserObject),
-    }).then((res) => {
-      if (res.ok) {
-        setSignupModal(!signupModal);
-      } else {
-        console.log(res);
-      }
-    });
+    })
+      .then((res) => {
+        if (res.ok) {
+          setSignupModal(!signupModal);
+        } else {
+          throw new Error();
+        }
+      })
+      .catch((error) => {
+        alert(error);
+      });
   }
 
   function handleLogin(userEmail, userPassword) {
@@ -103,7 +106,7 @@ function App() {
         setIsLoggedIn(true);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   }
 
@@ -120,7 +123,7 @@ function App() {
     }
   }
 
-  function addPasswordToArray(passwords, site, username, password) {
+  function addPasswordToArray(site, username, password) {
     let newPasswordObject = {
       user_id: currentUser.id,
       site: site,
@@ -138,12 +141,16 @@ function App() {
         password: currentUser.password,
         newPassword: newPasswordObject,
       }),
-    }).then((response) => {
-      if (response.ok) {
-        setAddPasswordModal(false);
-      }
-      throw new Error(response.statusText);
-    });
+    })
+      .then((response) => {
+        if (response.ok) {
+          setAddPasswordModal(false);
+        }
+        throw new Error(response.statusText);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   function getAllPasswords() {

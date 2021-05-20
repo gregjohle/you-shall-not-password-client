@@ -26,9 +26,10 @@ export default function AddPassword(props) {
     setAddNewPassword(event.target.value);
   }
 
-  function handlePasswordSubmit(event, passwords, site, username, password) {
+  function handlePasswordSubmit(event) {
     event.preventDefault();
-    addPasswordToArray(passwords, site, username, password);
+    console.log(addNewPassword);
+    addPasswordToArray(addSite, addUsername, addNewPassword);
   }
 
   function handleCancel(event) {
@@ -40,17 +41,7 @@ export default function AddPassword(props) {
   }
 
   return (
-    <form
-      onSubmit={(e) =>
-        handlePasswordSubmit(
-          e,
-          passwords,
-          currentUser.id,
-          addSite,
-          addUsername,
-          addNewPassword
-        )
-      }>
+    <form onSubmit={(e) => handlePasswordSubmit(e)}>
       <label>Site Name:</label>
       <input
         type='text'

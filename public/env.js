@@ -218,7 +218,7 @@ window.env = {
   "GDMSESSION": "gnome",
   "ORIGINAL_XDG_CURRENT_DESKTOP": "GNOME",
   "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus",
-  "npm_package_gitHead": "e2eba71147b487d8323b8b61696f930f7fdd79a1",
+  "npm_package_gitHead": "f82775d6c455b2c0cb9bc60fa0bbd8d2152300ad",
   "npm_config_update_notifier": "true",
   "NVM_BIN": "/home/greg/.nvm/versions/node/v10.24.0/bin",
   "MAIL": "/var/spool/mail/greg",
@@ -243,8 +243,8 @@ window.env = {
   "TERM_PROGRAM": "vscode",
   "npm_config_parseable": "",
   "npm_config_init_version": "1.0.0",
-  "LOGIN_URL": "https://evening-dusk-89744.herokuapp.com/api/users/login",
-  "AUTH_URL": "https://evening-dusk-89744.herokuapp.com/api/users/",
-  "REGISTER_URL": "https://evening-dusk-89744.herokuapp.com/api/users/register",
-  "PASSWORDS_URL": "https://evening-dusk-89744.herokuapp.com/api/passwords/"
+  "LOGIN_URL": "https://stark-crag-77653.herokuapp.com/api/users/login",
+  "REGISTER_URL": "https://stark-crag-77653.herokuapp.com/api/users/register",
+  "PASSWORDS_URL": "https://stark-crag-77653.herokuapp.com/api/passwords/",
+  "ADD_PASSWORD_URL": "https://stark-crag-77653.herokuapp.com/api/passwords/add"
 };
