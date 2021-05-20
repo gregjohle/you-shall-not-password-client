@@ -58,7 +58,7 @@ function App() {
       phone_number: userPhoneNumber,
     };
     console.log(newUserObject);
-    fetch("http://localhost:8000/api/users/register", {
+    fetch(env.REGISTER_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -78,7 +78,7 @@ function App() {
       email: userEmail,
       password: userPassword,
     };
-    fetch("http://localhost:8000/api/users/login", {
+    fetch(env.LOGIN_URL, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -128,10 +128,10 @@ function App() {
       password: password,
     };
 
-    fetch("http://localhost:8000/api/passwords/add", {
+    fetch(env.ADD_PASSWORD_URL, {
       method: "POST",
       headers: {
-        "Access-Control-Allow-Origin": "true",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: currentUser.email,
@@ -146,26 +146,25 @@ function App() {
     });
   }
 
-  function getAllPasswords(userId) {
-    fetch("http://localhost:8000/api/passwords/", {
+  function getAllPasswords() {
+    let bodyInfo = {
+      user_id: currentUser.id,
+    };
+    fetch(env.PASSWORDS_URL, {
       method: "POST",
       headers: {
-        "Access-Control-Allow-Origin": "true",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        user_id: userId,
-      }),
+      body: JSON.stringify(bodyInfo),
     })
       .then((response) => {
         if (response.ok) {
           return response.json();
-          // console.log(response);
         }
         throw new Error(response.statusText);
       })
       .then((responseJson) => {
-        console.log(responseJson);
-        // setPasswords(responseJson);
+        setPasswords(responseJson);
       })
       .catch((err) => {
         alert(err);

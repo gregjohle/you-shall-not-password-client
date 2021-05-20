@@ -23,7 +23,7 @@ export default function PasswordsList(props) {
   } = props;
 
   useEffect(() => {
-    getAllPasswords(currentUser.id);
+    getAllPasswords();
   }, [setAddPasswordModal]);
 
   // console.log(passwords);
