@@ -23,6 +23,7 @@ function App() {
   let [addUsername, setAddUsername] = useState("");
   let [addNewPassword, setAddNewPassword] = useState("");
 
+  // This switches the nav Login to Logout and vice versa
   function handleNavDisplay() {
     let logStatus = "";
 
@@ -34,6 +35,7 @@ function App() {
     return logStatus;
   }
 
+  // These are for handling the modals
   function openSignupModal() {
     setSignupModal(!signupModal);
   }
@@ -50,6 +52,7 @@ function App() {
     setLoginModal(!loginModal);
   }
 
+  // function to add a new user
   function handleNewUser(userName, userEmail, userPassword, userPhoneNumber) {
     let newUserObject = {
       name: userName,
@@ -76,6 +79,7 @@ function App() {
       });
   }
 
+  // function to login an existing user
   function handleLogin(userEmail, userPassword) {
     let loginInfo = {
       email: userEmail,
@@ -110,6 +114,7 @@ function App() {
       });
   }
 
+  // function to clear everything when logged out
   function handleNavLoginLogout() {
     if (isLoggedIn === false) {
       setLoginModal(true);
@@ -120,9 +125,16 @@ function App() {
       setLoginUserPassword("");
       setVerifyPassword("");
       setUserPhoneNumber("");
+      setPasswords([]);
+      setUserName("");
+      setPasswordSearch("");
+      setAddSite("");
+      setAddUsername("");
+      setAddNewPassword("");
     }
   }
 
+  //function to add a new password for the logged-in user
   function addPasswordToArray(site, username, password) {
     let newPasswordObject = {
       user_id: currentUser.id,
@@ -153,6 +165,7 @@ function App() {
       });
   }
 
+  // get all passwords for the current user
   function getAllPasswords() {
     let bodyInfo = {
       user_id: currentUser.id,
