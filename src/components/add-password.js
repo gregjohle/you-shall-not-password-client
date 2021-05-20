@@ -2,7 +2,6 @@ import React from "react";
 
 export default function AddPassword(props) {
   let {
-    currentUser,
     addSite,
     setAddSite,
     addUsername,
@@ -10,7 +9,6 @@ export default function AddPassword(props) {
     addNewPassword,
     setAddNewPassword,
     addPasswordToArray,
-    passwords,
     setAddPasswordModal,
   } = props;
 

@@ -24,7 +24,7 @@ export default function PasswordsList(props) {
 
   useEffect(() => {
     getAllPasswords();
-  }, [addPasswordToArray]);
+  }, [addPasswordToArray, getAllPasswords]);
 
   let userPasswords = passwords;
 
