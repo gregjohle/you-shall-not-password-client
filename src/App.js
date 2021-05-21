@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Nav from "./components/header-nav";
 import Home from "./components/home";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import PasswordsList from "./components/passwords-list";
 import env from "react-dotenv";
+import isDeepEqual from "fast-deep-equal/react";
 
 function App() {
   let [currentUser, setCurrentUser] = useState({});
@@ -22,6 +23,14 @@ function App() {
   let [addSite, setAddSite] = useState("");
   let [addUsername, setAddUsername] = useState("");
   let [addNewPassword, setAddNewPassword] = useState("");
+
+  const passwordsRef = useRef(passwords);
+
+  function comparePasswords({ passwords }) {
+    if (!isDeepEqual(passwordsRef.current, passwords)) {
+      passwordsRef.current = passwords;
+    }
+  }
 
   // This switches the nav Login to Logout and vice versa
   function handleNavDisplay() {
@@ -134,37 +143,6 @@ function App() {
     }
   }
 
-  //function to add a new password for the logged-in user
-  function addPasswordToArray(site, username, password) {
-    let newPasswordObject = {
-      user_id: currentUser.id,
-      site: site,
-      username: username,
-      password: password,
-    };
-
-    fetch(env.ADD_PASSWORD_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: currentUser.email,
-        password: currentUser.password,
-        newPassword: newPasswordObject,
-      }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          setAddPasswordModal(false);
-        }
-        throw new Error(response.statusText);
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  }
-
   // get all passwords for the current user
   function getAllPasswords() {
     let bodyInfo = {
@@ -185,9 +163,37 @@ function App() {
       })
       .then((responseJson) => {
         setPasswords(responseJson);
+        comparePasswords(passwords);
       })
       .catch((err) => {
         alert(err);
+      });
+  }
+
+  //function to add a new password for the logged-in user
+  function addPasswordToArray(site, username, password) {
+    fetch(env.ADD_PASSWORD_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: currentUser.id,
+        site: site,
+        username: username,
+        password: password,
+      }),
+    })
+      .then((response) => {
+        console.log(response.body);
+        if (response.ok) {
+          setAddPasswordModal(false);
+          getAllPasswords();
+        }
+        throw new Error(response.statusText);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 
@@ -233,6 +239,7 @@ function App() {
           setAddNewPassword={setAddNewPassword}
           addPasswordToArray={addPasswordToArray}
           getAllPasswords={getAllPasswords}
+          passwordsRef={passwordsRef}
         />
       );
     }
