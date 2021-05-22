@@ -5,7 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #224f52;
+  background-image: url("./components/images/background.jpg");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: left;
   width: auto;
 }
 

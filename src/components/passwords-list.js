@@ -21,6 +21,7 @@ export default function PasswordsList(props) {
     addPasswordToArray,
     getAllPasswords,
     passwordsRef,
+    deletePassword,
   } = props;
 
   // There is a warning about adding getAllPasswords to the dependency array here.
@@ -45,11 +46,13 @@ export default function PasswordsList(props) {
       username={password.username}
       password={password.password}
       key={password.id}
+      passwordId={password.id}
+      deletePassword={deletePassword}
     />
   ));
 
   return (
-    <div>
+    <div className='passwordsList'>
       <PasswordListControls
         userPasswords={userPasswords}
         addPassword={addPassword}

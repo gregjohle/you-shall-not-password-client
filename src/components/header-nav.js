@@ -16,18 +16,30 @@ export default function Nav(props) {
     return greeting;
   }
 
+  function loginCSS() {
+    let className = "";
+
+    if (!isLoggedIn) {
+      className = "notLoggedIn";
+    }
+    return className;
+  }
+
   return (
-    <header>
-      <h1>You Shall Not Password</h1>
-      <h3>{welcomeUser()}</h3>
+    <header className={loginCSS()}>
+      <div className='greeting'>
+        <h1 className='header'>You Shall Not Password</h1>
+        <h3 className='header'>{welcomeUser()}</h3>
+      </div>
+
       <nav>
-        <li>
+        <li className='header'>
           <Link to='/'>Home</Link>
         </li>
-        <li>
+        <li className='header'>
           <Link to='/about'>About</Link>
         </li>
-        <li>
+        <li className='header'>
           <Link to='/' onClick={(e) => handleNavLoginLogout(e)}>
             {logStatus()}
           </Link>

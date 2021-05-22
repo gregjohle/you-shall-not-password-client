@@ -17,18 +17,36 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #0e0e0e;
+  background-color: #1a0d05;
   width: 100%;
   padding: 0 100% 2% 100%;
-  color: #f6e8a9;
+  color: white;
 }
 
-h1 {
+header.notLoggedIn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a0d05;
+  width: 100%;
+  padding: 0 100% 2% 100%;
+  color: white;
+}
+
+h1.header {
   font-family: UnifrakturCook;
 }
 
-h2 {
+h2.header {
   font-family: Montserrat;
+}
+
+div.greeting {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 nav {
@@ -39,7 +57,11 @@ nav {
   list-style-type: none;
 }
 
-nav li:not(:last-child) {
+nav li {
+  border: none;
+}
+
+nav li.header:not(:last-child) {
   padding-right: 5%;
 }
 
@@ -48,8 +70,25 @@ a {
   font-family: Montserrat;
 }
 
+@media screen and (min-width: 900px) {
+  header {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  h1.header {
+    flex: 3;
+    font-size: xx-large;
+    text-align: center;
+  }
+
+  h2.header {
+    font-size: medium;
+  }
+}
+
 a:link {
-  color: #f6e8a9;
+  color: white;
 }
 
 a:visited {
@@ -61,5 +100,5 @@ a:hover {
 }
 
 a:active {
-  color: blue;
+  color: #a68c75;
 }

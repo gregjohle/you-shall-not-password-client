@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "UnifrakturCook";
+  src: local("UnifrakturCook"),
+    url("./fonts/UnifrakturCook/UnifrakturCook-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"),
+    url("./fonts/Montserrat/Montserrat-Medium.ttf") format("truetype");
+  font-weight: medium;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0e0e0e;
+  color: #f6e8a9;
+  width: 100%;
+  padding: 0 100% 2% 100%;
+}
+
+@media screen and (min-width: 900px) {
+  footer {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}

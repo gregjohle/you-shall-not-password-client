@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import Nav from "./components/header-nav";
 import Home from "./components/home";
 import About from "./components/about";
+import Footer from "./components/footer";
 import "./App.css";
 import { Switch, Route, Router } from "react-router-dom";
 import PasswordsList from "./components/passwords-list";
@@ -171,6 +172,30 @@ function App() {
       });
   }
 
+  function deletePassword(id) {
+    let deleteInfo = {
+      id: id,
+    };
+    console.log(deleteInfo);
+    fetch(env.DELETE_PASSWORD_URL, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(deleteInfo),
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.ok) {
+          getAllPasswords();
+        }
+        throw new Error(res.statusText);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   //function to add a new password for the logged-in user
   function addPasswordToArray(site, username, password) {
     fetch(env.ADD_PASSWORD_URL, {
@@ -186,7 +211,6 @@ function App() {
       }),
     })
       .then((response) => {
-        console.log(response.body);
         if (response.ok) {
           setAddPasswordModal(false);
           getAllPasswords();
@@ -241,6 +265,7 @@ function App() {
           addPasswordToArray={addPasswordToArray}
           getAllPasswords={getAllPasswords}
           passwordsRef={passwordsRef}
+          deletePassword={deletePassword}
         />
       );
     }
@@ -262,6 +287,7 @@ function App() {
         <Route path='/about'>{about}</Route>
         <Route path='/'>{homePage}</Route>
       </Switch>
+      <Footer />
     </div>
   );
 }

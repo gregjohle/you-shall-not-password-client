@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import AddPassword from "./add-password";
+import "./password-list-controls.css";
 
 export default function PasswordListControls(props) {
   let {
@@ -30,14 +31,17 @@ export default function PasswordListControls(props) {
   }
 
   return (
-    <div className='controls'>
-      <input
-        type='text'
-        value={passwordSearch}
-        onChange={(e) => handlePasswordSearch(e)}
-        placeholder='Search'
-      />
-      <button onClick={() => handlePasswordModalClose()}>Add Password</button>
+    <div>
+      <div className='controls'>
+        <input
+          type='text'
+          value={passwordSearch}
+          onChange={(e) => handlePasswordSearch(e)}
+          placeholder='Search'
+        />
+        <button onClick={() => handlePasswordModalClose()}>Add Password</button>
+      </div>
+
       <Modal
         isOpen={addPasswordModal}
         onRequestClose={(e) => handlePasswordModalClose()}>

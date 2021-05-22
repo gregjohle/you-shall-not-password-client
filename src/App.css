@@ -6,16 +6,3 @@ div.App {
   width: 100%;
   margin: 0 auto;
 }
-
-.landing-page-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.landing-page-buttons button {
-  margin: 3%;
-  height: 50px;
-  width: 100px;
-}
