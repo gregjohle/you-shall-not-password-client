@@ -1,4 +1,5 @@
 import React from "react";
+import "./add-password.css";
 
 export default function AddPassword(props) {
   let {

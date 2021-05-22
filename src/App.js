@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import Nav from "./components/header-nav";
 import Home from "./components/home";
+import About from "./components/about";
 import "./App.css";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Router } from "react-router-dom";
 import PasswordsList from "./components/passwords-list";
 import env from "react-dotenv";
 import isDeepEqual from "fast-deep-equal/react";
@@ -245,6 +246,10 @@ function App() {
     }
   };
 
+  let about = () => {
+    return <About />;
+  };
+
   return (
     <div className='App'>
       <Nav
@@ -254,6 +259,7 @@ function App() {
         handleNavLoginLogout={handleNavLoginLogout}
       />
       <Switch>
+        <Route path='/about'>{about}</Route>
         <Route path='/'>{homePage}</Route>
       </Switch>
     </div>
