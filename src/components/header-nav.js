@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./header-nav.css";
+import "./fonts/UnifrakturCook/UnifrakturCook-Bold.ttf";
 
 export default function Nav(props) {
   let { logStatus, currentUser, isLoggedIn, handleNavLoginLogout } = props;

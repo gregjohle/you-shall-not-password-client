@@ -1,9 +1,10 @@
 import React from "react";
 import Ysnp from "./images/ysnp.jpg";
+import "./about.css";
 
 export default function About() {
   return (
-    <div>
+    <div className='about'>
       <h2>About This App</h2>
       <p>
         In this increasingly digital world, it can be difficult to keep track of

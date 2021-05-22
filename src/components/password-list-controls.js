@@ -31,11 +31,11 @@ export default function PasswordListControls(props) {
 
   return (
     <div className='controls'>
-      <label>Search</label>
       <input
         type='text'
         value={passwordSearch}
         onChange={(e) => handlePasswordSearch(e)}
+        placeholder='Search'
       />
       <button onClick={() => handlePasswordModalClose()}>Add Password</button>
       <Modal
