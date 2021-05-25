@@ -4,7 +4,7 @@ import Home from "./components/home";
 import About from "./components/about";
 import Footer from "./components/footer";
 import "./App.css";
-import { Switch, Route, Router } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import PasswordsList from "./components/passwords-list";
 import env from "react-dotenv";
 import isDeepEqual from "fast-deep-equal/react";
