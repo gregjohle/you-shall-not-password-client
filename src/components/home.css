@@ -33,3 +33,9 @@ button {
   width: 100px;
   height: 50px;
 }
+
+ul.demo li.demo {
+  display: flex;
+  flex-direction: column;
+  border: none;
+}

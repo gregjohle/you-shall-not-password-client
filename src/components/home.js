@@ -41,20 +41,17 @@ export default function Home(props) {
         If you would like to try out a demo account, please try one of the
         following:
       </p>
-      <ul>
-        <li>
-          <p>email: gandalf@email.com</p>
-          <p>password: YouShallNotPass!</p>
-        </li>
-        <li>
-          <p>email: frodo@shire.net</p>
-          <p>password: SamWasTheRealHero</p>
-        </li>
-        <li>
-          <p>email: gollum@gollum.gollum</p>
-          <p>password: MyPrecious</p>
-        </li>
-      </ul>
+
+      <p>
+        <b>email:</b> gandalf@email.com <b>password:</b> YouShallNotPass!
+      </p>
+      <p>
+        <b>email:</b> frodo@shire.net <b>password:</b> SamWasTheRealHero
+      </p>
+      <p>
+        <b>email:</b> gollum@gollum.gollum <b>password:</b> MyPrecious
+      </p>
+
       <div className='landing-page-buttons'>
         <button onClick={(e) => openLoginModal()}>Login</button>
         <button onClick={(e) => openSignupModal()}>Sign Up</button>
