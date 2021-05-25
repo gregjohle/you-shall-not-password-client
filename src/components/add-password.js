@@ -137,46 +137,58 @@ export default function AddPassword(props) {
       <Modal
         isOpen={generateModal}
         className='generatePasswordModal'
-        overlayClassName='overlay'
+        overlayClassName='generateOverlay'
         onRequestClose={handleGenerateCancel}>
         <div className='generate'>
-          <label for='length'>Length</label>
-          <select
-            name='length'
-            value={length}
-            onChange={(e) => handleLength(e)}>
-            <option>6</option>
-            <option>8</option>
-            <option>10</option>
-            <option>12</option>
-            <option>14</option>
-            <option>16</option>
-          </select>
-          <label for='numbers'>Numbers</label>
-          <input
-            className='checkbox'
-            type='checkbox'
-            value={numbers}
-            name='numbers'
-            onChange={(e) => handleNumbers(e)}
-          />
-          <label for='sumbols'>Symbols</label>
-          <input
-            className='checkbox'
-            type='checkbox'
-            value={symbols}
-            name='symbols'
-            onChange={(e) => handleSymbols(e)}
-          />
-          <label for='uppercase'>Uppercase</label>
-          <input
-            className='checkbox'
-            type='checkbox'
-            value={uppercase}
-            name='uppercase'
-            onChange={(e) => handleUppercase(e)}
-          />
-          <div>
+          <p>
+            This is where the magic happens. Use the following options to set
+            the parameters for your password.
+          </p>
+          <div className='row'>
+            <label for='length'>Length</label>
+            <select
+              name='length'
+              value={length}
+              onChange={(e) => handleLength(e)}>
+              <option>6</option>
+              <option>8</option>
+              <option>10</option>
+              <option>12</option>
+              <option>14</option>
+              <option>16</option>
+            </select>
+          </div>
+          <div className='row'>
+            <label for='numbers'>Numbers</label>
+            <input
+              className='checkbox'
+              type='checkbox'
+              value={numbers}
+              name='numbers'
+              onChange={(e) => handleNumbers(e)}
+            />
+          </div>
+          <div className='row'>
+            <label for='sumbols'>Symbols</label>
+            <input
+              className='checkbox'
+              type='checkbox'
+              value={symbols}
+              name='symbols'
+              onChange={(e) => handleSymbols(e)}
+            />
+          </div>
+          <div className='row'>
+            <label for='uppercase'>Uppercase</label>
+            <input
+              className='checkbox'
+              type='checkbox'
+              value={uppercase}
+              name='uppercase'
+              onChange={(e) => handleUppercase(e)}
+            />
+          </div>
+          <div className='generateButtons'>
             <button onClick={(e) => handleCreatePassword(e)}>Submit</button>
             <button onClick={handleGenerateCancel}>Cancel</button>
           </div>

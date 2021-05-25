@@ -4,9 +4,7 @@
   left: 15%;
   right: 15%;
   bottom: 15%;
-  background: url("./images/modal-bg.jpg") center;
-  background-repeat: no-repeat;
-  background-size: contain;
+  background: transparent;
 }
 
 .modal h2 {
@@ -19,21 +17,35 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #02070a;
+  background: url("./images/modal-bg.jpg") center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .generatePasswordModal {
-  background: white;
+  background: #02070a;
   position: absolute;
   top: 15%;
   left: 15%;
   right: 15%;
   bottom: 15%;
+  color: #2d8bb3;
+}
+
+.generateOverlay {
+  background-color: #02070a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 input.checkbox {
   width: 25px;
   height: 25px;
+  color: #2d8bb3;
+  background: #02070a;
 }
 
 .generate {
@@ -44,7 +56,29 @@ input.checkbox {
   padding-top: 15%;
 }
 
-select {
+div.generate div.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+div.generate div.row select {
   height: 25px;
   width: 50px;
+  color: #2d8bb3;
+  background: #02070a;
+  margin-left: 2%;
+}
+
+.generateButtons {
+  padding-top: 3%;
+}
+
+@media screen and (min-width: 900px) {
+  .modal {
+    position: absolute;
+
+    background: transparent;
+  }
 }
