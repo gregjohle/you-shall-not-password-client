@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# You Shall Not Password
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a client for a new app that helps users to keep track of passwords. The passwords stored through the app are encrpypted for security.
 
-## Available Scripts
+## Documentation
 
-In the project directory, you can run:
+### Landing Page
 
-### `yarn start`
+![Image](./src/components/images/screenshots/landing-page.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+From this location, a new user can be registered, or an existing user can login with their credentials.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Signup
 
-### `yarn test`
+![Image](./src/components/images/screenshots/signup.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A user can register for the app with this page.
 
-### `yarn build`
+### Login
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Image](./src/components/images/screenshots/login.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+With existing credentials, a user can login to the site from here.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### View Passwords
 
-### `yarn eject`
+![Image](./src/components/images/screenshots/logged-in.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Once logged-in, a user's stored passwords will appear automatically.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Search
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Image](./src/components/images/screenshots/search.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+With build-in search functionality, a user can search for a specific password by entering in words of phrases from the site name.
 
-## Learn More
+### Add a New Password
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Image](./src/components/images/screenshots/add-password.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+A user can use this form to add a new password to their stored passwords.
 
-### Code Splitting
+### Generate Password
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![Image](./src/components/images/screenshots/generate-password.png)
 
-### Analyzing the Bundle Size
+A user can generate a secure password to store and use automatically. These parameters ensure almost any password requirement can be met with this generated password.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### About Page
 
-### Making a Progressive Web App
+![Image](./src/components/images/screenshots/about.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This page provides some background and information to the user.
 
-### Advanced Configuration
+## Technology
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This app utilizes React for the majority of the client. There are two unique npm packages used to increase the functionality of the app. React-dotenv is used to allow environment variables to hold information that should not be public, such as endpoints, secrets, and more. Generate-password is a fast and secure package that generates secure password strings with given parameters.
 
-### Deployment
+## Live Demo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To view this app in action, click [here](https://you-shall-not-pass-client.vercel.app/)
