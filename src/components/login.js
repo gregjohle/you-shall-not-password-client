@@ -28,23 +28,23 @@ export default function Login(props) {
       <h2>Login</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>
-          <label>Email:</label>
           <input
             type='text'
             name='email'
             value={loginEmail}
             onChange={(e) => handleEmail(e)}
             required
+            placeholder='Email Address'
           />
         </div>
         <div>
-          <label>Password:</label>
           <input
             type='password'
             name='password'
             value={loginPassword}
             onChange={(e) => handlePassword(e)}
             required
+            placeholder='Password'
           />
         </div>
         <button type='submit'>Login</button>

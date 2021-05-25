@@ -7,7 +7,6 @@ export default function PasswordListControls(props) {
   let {
     passwordSearch,
     setPasswordSearch,
-    // userPasswords,
     addPassword,
     currentUser,
     addPasswordModal,
@@ -20,6 +19,16 @@ export default function PasswordListControls(props) {
     setAddNewPassword,
     addPasswordToArray,
     passwords,
+    generateModal,
+    setGenerateModal,
+    length,
+    setLength,
+    numbers,
+    setNumbers,
+    symbols,
+    setSymbols,
+    uppercase,
+    setUppercase,
   } = props;
 
   function handlePasswordSearch(event) {
@@ -44,6 +53,8 @@ export default function PasswordListControls(props) {
 
       <Modal
         isOpen={addPasswordModal}
+        className='modal'
+        overlayClassName='overlay'
         onRequestClose={(e) => handlePasswordModalClose()}>
         <AddPassword
           currentUser={currentUser}
@@ -57,6 +68,16 @@ export default function PasswordListControls(props) {
           addPasswordToArray={addPasswordToArray}
           passwords={passwords}
           setAddPasswordModal={setAddPasswordModal}
+          generateModal={generateModal}
+          setGenerateModal={setGenerateModal}
+          length={length}
+          setLength={setLength}
+          numbers={numbers}
+          setNumbers={setNumbers}
+          symbols={symbols}
+          setSymbols={setSymbols}
+          uppercase={uppercase}
+          setUppercase={setUppercase}
         />
       </Modal>
     </div>

@@ -22,6 +22,16 @@ export default function PasswordsList(props) {
     getAllPasswords,
     passwordsRef,
     deletePassword,
+    generateModal,
+    setGenerateModal,
+    length,
+    setLength,
+    numbers,
+    setNumbers,
+    symbols,
+    setSymbols,
+    uppercase,
+    setUppercase,
   } = props;
 
   // There is a warning about adding getAllPasswords to the dependency array here.
@@ -69,6 +79,16 @@ export default function PasswordsList(props) {
         setAddNewPassword={setAddNewPassword}
         addPasswordToArray={addPasswordToArray}
         passwords={passwords}
+        generateModal={generateModal}
+        setGenerateModal={setGenerateModal}
+        length={length}
+        setLength={setLength}
+        numbers={numbers}
+        setNumbers={setNumbers}
+        symbols={symbols}
+        setSymbols={setSymbols}
+        uppercase={uppercase}
+        setUppercase={setUppercase}
       />
       <ul>{passwordsList}</ul>
     </div>

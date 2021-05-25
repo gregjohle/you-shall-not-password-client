@@ -50,38 +50,46 @@ export default function Signup(props) {
     <div>
       <h2>Signup</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <label>Name</label>
-        <input type='text' value={userName} onChange={(e) => handleName(e)} />
-        <label>email address:</label>
+        <input
+          type='text'
+          value={userName}
+          onChange={(e) => handleName(e)}
+          placeholder='Name'
+          required
+        />
         <input
           type='text'
           name='email-address'
           required
           value={loginEmail}
           onChange={(e) => handleEmail(e)}
+          placeholder='Email Address'
+          required
         />
-        <label>Password</label>
         <input
           type='password'
           name='password-new'
           required
           value={loginPassword}
           onChange={(e) => handlePassword(e)}
+          placeholder='Password'
+          required
         />
-        <label>Confirm Password</label>
         <input
           type='password'
           name='password-confirm'
           required
           value={verifyPassword}
           onChange={(e) => handleVerifyPassword(e)}
+          placeholder='Confirm Password'
+          required
         />
-        <label>Phone Number (optional)</label>
         <input
           type='tel'
           name='phone-number'
           value={userPhoneNumber}
           onChange={(e) => handlePhoneNumber(e)}
+          placeholder='Phone Number'
         />
         <button type='submit'>Submit</button>
       </form>

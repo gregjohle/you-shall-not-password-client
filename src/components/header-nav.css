@@ -17,10 +17,10 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #1a0d05;
+  background-color: #02070a;
   width: 100%;
   padding: 0 100% 2% 100%;
-  color: white;
+  color: #def0f8;
 }
 
 header.notLoggedIn {
@@ -28,10 +28,10 @@ header.notLoggedIn {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #1a0d05;
+  background-color: #02070a;
   width: 100%;
   padding: 0 100% 2% 100%;
-  color: white;
+  color: #def0f8;
 }
 
 h1.header {
@@ -88,17 +88,17 @@ a {
 }
 
 a:link {
-  color: white;
+  color: #def0f8;
 }
 
 a:visited {
-  color: #b7a367;
+  color: #97c2e5;
 }
 
 a:hover {
-  color: #d3c38c;
+  color: #5991b4;
 }
 
 a:active {
-  color: #a68c75;
+  color: white;
 }

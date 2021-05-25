@@ -193,6 +193,7 @@ window.env = {
   "npm_config_auth_type": "legacy",
   "npm_config_version": "",
   "npm_config_logs_max": "10",
+  "npm_package_dependencies_generate_password": "^1.6.0",
   "LC_TIME": "en_US.UTF-8",
   "npm_config_umask": "0022",
   "npm_config_sso_poll_frequency": "500",
@@ -218,7 +219,7 @@ window.env = {
   "GDMSESSION": "gnome",
   "ORIGINAL_XDG_CURRENT_DESKTOP": "GNOME",
   "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus",
-  "npm_package_gitHead": "7056505c34cfc2288ed56059df2447d942f692b3",
+  "npm_package_gitHead": "13eac43dfae836d8e35742b15617cfddabbff3c0",
   "npm_config_update_notifier": "true",
   "NVM_BIN": "/home/greg/.nvm/versions/node/v10.24.0/bin",
   "MAIL": "/var/spool/mail/greg",
@@ -246,5 +247,6 @@ window.env = {
   "LOGIN_URL": "https://stark-crag-77653.herokuapp.com/api/users/login",
   "REGISTER_URL": "https://stark-crag-77653.herokuapp.com/api/users/register",
   "PASSWORDS_URL": "https://stark-crag-77653.herokuapp.com/api/passwords/",
-  "ADD_PASSWORD_URL": "https://stark-crag-77653.herokuapp.com/api/passwords/add"
+  "ADD_PASSWORD_URL": "https://stark-crag-77653.herokuapp.com/api/passwords/add",
+  "DELETE_PASSWORD_URL": "https://stark-crag-77653.herokuapp.com/api/passwords/delete"
 };

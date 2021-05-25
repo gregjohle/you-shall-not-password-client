@@ -3,6 +3,7 @@ import Login from "./login";
 import Signup from "./signup";
 import Modal from "react-modal";
 import "./home.css";
+import "./modal.css";
 
 Modal.setAppElement("#root");
 
@@ -40,7 +41,11 @@ export default function Home(props) {
         <button onClick={(e) => openLoginModal()}>Login</button>
         <button onClick={(e) => openSignupModal()}>Sign Up</button>
       </div>
-      <Modal isOpen={loginModal} onRequestClose={closeLoginModal}>
+      <Modal
+        isOpen={loginModal}
+        className='modal'
+        overlayClassName='overlay'
+        onRequestClose={closeLoginModal}>
         <Login
           handleLogin={handleLogin}
           loginEmail={loginEmail}
@@ -49,7 +54,11 @@ export default function Home(props) {
           setLoginPassword={setLoginPassword}
         />
       </Modal>
-      <Modal isOpen={signupModal} onRequestClose={closeSignupModal}>
+      <Modal
+        isOpen={signupModal}
+        className='modal'
+        overlayClassName='overlay'
+        onRequestClose={closeSignupModal}>
         <Signup
           handleNewUser={handleNewUser}
           loginEmail={loginEmail}

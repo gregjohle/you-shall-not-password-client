@@ -1,9 +1,20 @@
 h2 {
   text-align: center;
+  color: #02070a;
+  font-size: xx-large;
 }
 
 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+input {
+  background-color: #02070a;
+  color: #def0f8;
+  border: 2px solid #def0f8;
+  height: 50px;
+  width: 200px;
+  border-radius: 5px;
 }

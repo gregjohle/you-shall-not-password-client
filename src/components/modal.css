@@ -1,0 +1,50 @@
+.modal {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  right: 15%;
+  bottom: 15%;
+  background: url("./images/modal-bg.jpg") center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.modal h2 {
+  color: transparent;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #02070a;
+}
+
+.generatePasswordModal {
+  background: white;
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  right: 15%;
+  bottom: 15%;
+}
+
+input.checkbox {
+  width: 25px;
+  height: 25px;
+}
+
+.generate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15%;
+}
+
+select {
+  height: 25px;
+  width: 50px;
+}
