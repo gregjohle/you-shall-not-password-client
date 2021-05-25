@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import env from "react-dotenv";
+import Nav from "./header-nav";
+import handleNavDisplay from "../App";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
 
-  ReactDOM.render(<App />, div);
+  ReactDOM.render(<Nav />, div);
 
   ReactDOM.unmountComponentAtNode(div);
 });
