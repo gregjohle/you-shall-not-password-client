@@ -8,7 +8,6 @@ import { Switch, Route, Router } from "react-router-dom";
 import PasswordsList from "./components/passwords-list";
 import env from "react-dotenv";
 import isDeepEqual from "fast-deep-equal/react";
-import generator from "generate-password";
 
 function App() {
   let [currentUser, setCurrentUser] = useState({});
@@ -39,16 +38,6 @@ function App() {
     if (!isDeepEqual(passwordsRef.current, passwords)) {
       passwordsRef.current = passwords;
     }
-  }
-
-  function createPassword() {
-    return generator.generate({
-      lowercase: true,
-      length: length,
-      numbers: numbers,
-      symbols: symbols,
-      uppercase: uppercase,
-    });
   }
 
   // This switches the nav Login to Logout and vice versa

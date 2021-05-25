@@ -1,6 +1,7 @@
 import React from "react";
 import "./add-password.css";
 import Modal from "react-modal";
+import generator from "generate-password";
 
 export default function AddPassword(props) {
   let {
@@ -23,6 +24,26 @@ export default function AddPassword(props) {
     uppercase,
     setUppercase,
   } = props;
+
+  function createPassword() {
+    return generator.generate({
+      lowercase: true,
+      length: length,
+      numbers: numbers,
+      symbols: symbols,
+      uppercase: uppercase,
+    });
+  }
+
+  function handleCreatePassword(event) {
+    event.preventDefault();
+    let newPassword = createPassword();
+    setAddNewPassword(newPassword);
+    setGenerateModal(!generateModal);
+    setNumbers(false);
+    setSymbols(false);
+    setUppercase(false);
+  }
 
   function handleOpenGenerateModal(event) {
     event.preventDefault();
@@ -156,7 +177,7 @@ export default function AddPassword(props) {
             onChange={(e) => handleUppercase(e)}
           />
           <div>
-            <button>Submit</button>
+            <button onClick={(e) => handleCreatePassword(e)}>Submit</button>
             <button onClick={handleGenerateCancel}>Cancel</button>
           </div>
         </div>
