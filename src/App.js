@@ -184,7 +184,6 @@ function App() {
     let deleteInfo = {
       id: id,
     };
-    console.log(deleteInfo);
     fetch(env.DELETE_PASSWORD_URL, {
       method: "post",
       headers: {
@@ -193,7 +192,6 @@ function App() {
       body: JSON.stringify(deleteInfo),
     })
       .then((res) => {
-        console.log(res);
         if (res.ok) {
           getAllPasswords();
         }
