@@ -37,6 +37,24 @@ export default function Home(props) {
         generate a secure one for you! Please feel free to login or sign up
         below.
       </p>
+      <p>
+        If you would like to try out a demo account, please try one of the
+        following:
+      </p>
+      <ul>
+        <li>
+          <p>email: gandalf@email.com</p>
+          <p>password: YouShallNotPass!</p>
+        </li>
+        <li>
+          <p>email: frodo@shire.net</p>
+          <p>password: SamWasTheRealHero</p>
+        </li>
+        <li>
+          <p>email: gollum@gollum.gollum</p>
+          <p>password: MyPrecious</p>
+        </li>
+      </ul>
       <div className='landing-page-buttons'>
         <button onClick={(e) => openLoginModal()}>Login</button>
         <button onClick={(e) => openSignupModal()}>Sign Up</button>
