@@ -31,6 +31,7 @@ function App() {
   let [symbols, setSymbols] = useState(false);
   let [uppercase, setUppercase] = useState(false);
 
+  // this useRef is in place so that when passwords are added or deleted, the list can be re-rendered accordingly
   const passwordsRef = useRef(passwords);
 
   //this compares the passwords when signing up to ensure the passwords are confirmed
@@ -178,6 +179,7 @@ function App() {
       });
   }
 
+  // This allows a password to be deleted
   function deletePassword(id) {
     let deleteInfo = {
       id: id,
@@ -228,6 +230,7 @@ function App() {
       });
   }
 
+  // this allows the same route of "/" to be used for the landing page and the passwords list of  logged-in user
   let homePage = () => {
     if (isLoggedIn === false) {
       return (

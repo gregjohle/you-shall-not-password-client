@@ -5,7 +5,7 @@ import Modal from "react-modal";
 import "./home.css";
 import "./modal.css";
 
-Modal.setAppElement("#root");
+// Modal.setAppElement("#root");
 
 export default function Home(props) {
   let {

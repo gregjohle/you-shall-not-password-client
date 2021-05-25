@@ -6,6 +6,7 @@ import "./fonts/UnifrakturCook/UnifrakturCook-Bold.ttf";
 export default function Nav(props) {
   let { logStatus, currentUser, isLoggedIn, handleNavLoginLogout } = props;
 
+  // This adds a nice greeting to welcome the current user.
   function welcomeUser() {
     let greeting = "";
 
@@ -16,6 +17,7 @@ export default function Nav(props) {
     return greeting;
   }
 
+  // This was added to simplify the styling of the header and greeting when not logged in.
   function loginCSS() {
     let className = "";
 

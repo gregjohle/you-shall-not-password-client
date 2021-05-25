@@ -25,6 +25,7 @@ export default function AddPassword(props) {
     setUppercase,
   } = props;
 
+  // This uses an npm package to create a secure and random password
   function createPassword() {
     return generator.generate({
       lowercase: true,
@@ -35,6 +36,7 @@ export default function AddPassword(props) {
     });
   }
 
+  // This adds the created password to the state used to hold the value of a new password. The parameters reset to not adversely affect any additional passwords added.
   function handleCreatePassword(event) {
     event.preventDefault();
     let newPassword = createPassword();
