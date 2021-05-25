@@ -17,7 +17,7 @@ export default function About() {
       </p>
       <img
         src={Ysnp}
-        alt='art by Mark Lone, image found at https://sleeplessthought.wordpress.com/2013/08/14/gandalf-vs-balrog-art-you-shall-not-pass/'
+        alt='art by Mark Lone, found at https://sleeplessthought.wordpress.com/2013/08/14/gandalf-vs-balrog-art-you-shall-not-pass/'
       />
       <p>
         This app utilizes secure technologies to protect the passwords you store

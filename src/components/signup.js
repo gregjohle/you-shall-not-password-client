@@ -64,7 +64,6 @@ export default function Signup(props) {
           value={loginEmail}
           onChange={(e) => handleEmail(e)}
           placeholder='Email Address'
-          required
         />
         <input
           type='password'
@@ -73,7 +72,6 @@ export default function Signup(props) {
           value={loginPassword}
           onChange={(e) => handlePassword(e)}
           placeholder='Password'
-          required
         />
         <input
           type='password'
@@ -82,7 +80,6 @@ export default function Signup(props) {
           value={verifyPassword}
           onChange={(e) => handleVerifyPassword(e)}
           placeholder='Confirm Password'
-          required
         />
         <input
           type='tel'
