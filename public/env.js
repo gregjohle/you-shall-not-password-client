@@ -219,7 +219,7 @@ window.env = {
   "GDMSESSION": "gnome",
   "ORIGINAL_XDG_CURRENT_DESKTOP": "GNOME",
   "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus",
-  "npm_package_gitHead": "4fc0693bd1c7297232d0290057e14b6ef646e505",
+  "npm_package_gitHead": "00bf54f2023be83d400b833b34d3539e58353c83",
   "npm_config_update_notifier": "true",
   "NVM_BIN": "/home/greg/.nvm/versions/node/v10.24.0/bin",
   "MAIL": "/var/spool/mail/greg",
