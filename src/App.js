@@ -4,7 +4,7 @@ import Home from "./components/home";
 import About from "./components/about";
 import Footer from "./components/footer";
 import "./App.css";
-import { Switch, Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import PasswordsList from "./components/passwords-list";
 import isDeepEqual from "fast-deep-equal/react";
 
@@ -38,18 +38,6 @@ function App() {
     if (!isDeepEqual(passwordsRef.current, passwords)) {
       passwordsRef.current = passwords;
     }
-  }
-
-  // This switches the nav Login to Logout and vice versa
-  function handleNavDisplay() {
-    let logStatus = "";
-
-    if (isLoggedIn === false) {
-      logStatus = "Login";
-    } else if (isLoggedIn === true) {
-      logStatus = "Logout";
-    }
-    return logStatus;
   }
 
   // These are for handling the modals
@@ -294,7 +282,6 @@ function App() {
   return (
     <div className='App'>
       <Nav
-        logStatus={handleNavDisplay}
         currentUser={currentUser}
         isLoggedIn={isLoggedIn}
         handleNavLoginLogout={handleNavLoginLogout}

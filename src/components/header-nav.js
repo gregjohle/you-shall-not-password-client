@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./header-nav.css";
 import "./fonts/UnifrakturCook/UnifrakturCook-Bold.ttf";
 
 export default function Nav(props) {
-  let { logStatus, currentUser, isLoggedIn, handleNavLoginLogout } = props;
+  let { currentUser, isLoggedIn, handleNavLoginLogout } = props;
 
   // This adds a nice greeting to welcome the current user.
   function welcomeUser() {
@@ -27,6 +27,7 @@ export default function Nav(props) {
     return className;
   }
 
+  // This switches the nav Login to Logout and vice versa
   function hideGreeting() {
     let greetingClass = "hidden";
 
@@ -34,6 +35,17 @@ export default function Nav(props) {
       greetingClass = "";
     }
     return greetingClass;
+  }
+
+  function handleNavDisplay() {
+    let logStatus = "";
+
+    if (isLoggedIn === false) {
+      logStatus = "Login";
+    } else if (isLoggedIn === true) {
+      logStatus = "Logout";
+    }
+    return logStatus;
   }
 
   return (
@@ -46,15 +58,15 @@ export default function Nav(props) {
       <nav>
         <ul className='nav'>
           <li className='header'>
-            <Link to='/'>Home</Link>
+            <NavLink to='/'>Home</NavLink>
           </li>
           <li className='header'>
-            <Link to='/about'>About</Link>
+            <NavLink to='/about'>About</NavLink>
           </li>
           <li className='header'>
-            <Link to='/' onClick={(e) => handleNavLoginLogout(e)}>
-              {logStatus()}
-            </Link>
+            <NavLink to='/' onClick={(e) => handleNavLoginLogout(e)}>
+              {handleNavDisplay()}
+            </NavLink>
           </li>
         </ul>
       </nav>
