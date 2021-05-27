@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PasswordListItem from "./password-list-item";
 import PasswordListControls from "./password-list-controls";
-import "./password-list.css";
+import "./passwords-list.css";
 
 export default function PasswordsList(props) {
   let {

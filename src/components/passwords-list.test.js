@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import PasswordsList from "./password-list";
+import PasswordsList from "./passwords-list.js";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
