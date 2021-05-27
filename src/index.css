@@ -21,7 +21,7 @@ code {
     monospace;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (max-width: 900px) {
   body {
     background: url("./components/images/background.jpg") center center fixed;
   }

@@ -6,7 +6,6 @@ import Footer from "./components/footer";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import PasswordsList from "./components/passwords-list";
-import env from "react-dotenv";
 import isDeepEqual from "fast-deep-equal/react";
 
 function App() {
@@ -78,7 +77,7 @@ function App() {
       password: userPassword,
       phone_number: userPhoneNumber,
     };
-    fetch(env.REGISTER_URL, {
+    fetch(process.env.REACT_APP_REGISTER_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -103,7 +102,7 @@ function App() {
       email: userEmail,
       password: userPassword,
     };
-    fetch(env.LOGIN_URL, {
+    fetch(process.env.REACT_APP_LOGIN_URL, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -157,7 +156,7 @@ function App() {
     let bodyInfo = {
       user_id: currentUser.id,
     };
-    fetch(env.PASSWORDS_URL, {
+    fetch(process.env.REACT_APP_PASSWORDS_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -184,7 +183,7 @@ function App() {
     let deleteInfo = {
       id: id,
     };
-    fetch(env.DELETE_PASSWORD_URL, {
+    fetch(process.env.REACT_APP_DELETE_PASSWORD_URL, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -204,7 +203,7 @@ function App() {
 
   //function to add a new password for the logged-in user
   function addPasswordToArray(site, username, password) {
-    fetch(env.ADD_PASSWORD_URL, {
+    fetch(process.env.REACT_APP_ADD_PASSWORD_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
