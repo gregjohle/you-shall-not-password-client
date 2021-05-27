@@ -42,7 +42,11 @@ export default function PasswordListControls(props) {
   return (
     <div>
       <div className='controls'>
+        <label for='search' className='hidden'>
+          Search
+        </label>
         <input
+          id='search'
           type='text'
           value={passwordSearch}
           onChange={(e) => handlePasswordSearch(e)}
