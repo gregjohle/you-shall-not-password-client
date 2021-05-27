@@ -103,7 +103,6 @@ export default function AddPassword(props) {
 
   return (
     <div className='addNew'>
-      <h2>Add Password</h2>
       <form onSubmit={(e) => handlePasswordSubmit(e)}>
         <input
           type='text'
