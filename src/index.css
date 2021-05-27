@@ -20,3 +20,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+@media screen and (min-width: 900px) {
+  body {
+    background: url("./components/images/background.jpg") center center fixed;
+  }
+}

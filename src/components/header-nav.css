@@ -34,12 +34,17 @@ header.notLoggedIn {
   color: #def0f8;
 }
 
+h2.hidden {
+  display: none;
+}
+
 h1.header {
   font-family: UnifrakturCook;
 }
 
 h2.header {
   font-family: Montserrat;
+  color: #def0f8;
 }
 
 div.greeting {
@@ -49,7 +54,7 @@ div.greeting {
   align-items: center;
 }
 
-nav {
+ul.nav {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -57,12 +62,16 @@ nav {
   list-style-type: none;
 }
 
-nav li {
+ul.nav li {
   border: none;
 }
 
-nav li.header:not(:last-child) {
+ul.nav li.header:not(:last-child) {
   padding-right: 5%;
+}
+
+ul.nav li.header:last-child {
+  margin-bottom: auto;
 }
 
 a {
@@ -80,10 +89,6 @@ a {
     flex: 3;
     font-size: xx-large;
     text-align: center;
-  }
-
-  h2.header {
-    font-size: medium;
   }
 }
 

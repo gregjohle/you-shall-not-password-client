@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "UnifrakturCook";
+  src: local("UnifrakturCook"),
+    url("./fonts/UnifrakturCook/UnifrakturCook-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
 div.home {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
@@ -11,6 +18,10 @@ div.home {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.fancy {
+  font-family: UnifrakturCook;
 }
 
 .home p {

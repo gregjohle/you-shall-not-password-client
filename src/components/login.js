@@ -25,7 +25,6 @@ export default function Login(props) {
 
   return (
     <>
-      <h2>Login</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>
           <input

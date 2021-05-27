@@ -31,6 +31,7 @@ export default function Home(props) {
 
   return (
     <div className='home'>
+      <h2 className='fancy'>More Secure Than Thorin's Tomb</h2>
       <p>
         This is a service to help store the many different passwords that you
         might have collected over the years. If you need a new password, we can
@@ -42,15 +43,15 @@ export default function Home(props) {
         following:
       </p>
 
-      <p>
+      <h3>
         <b>email:</b> gandalf@email.com <b>password:</b> YouShallNotPass!
-      </p>
-      <p>
+      </h3>
+      <h3>
         <b>email:</b> frodo@shire.net <b>password:</b> SamWasTheRealHero
-      </p>
-      <p>
+      </h3>
+      <h3>
         <b>email:</b> gollum@gollum.gollum <b>password:</b> MyPrecious
-      </p>
+      </h3>
 
       <div className='landing-page-buttons'>
         <button onClick={(e) => openLoginModal()}>Login</button>

@@ -8,7 +8,7 @@ export default function Nav(props) {
 
   // This adds a nice greeting to welcome the current user.
   function welcomeUser() {
-    let greeting = "";
+    let greeting = "No Current User";
 
     if (isLoggedIn === true) {
       greeting = "Welcome, " + currentUser.name;
@@ -27,25 +27,36 @@ export default function Nav(props) {
     return className;
   }
 
+  function hideGreeting() {
+    let greetingClass = "hidden";
+
+    if (isLoggedIn) {
+      greetingClass = "";
+    }
+    return greetingClass;
+  }
+
   return (
     <header className={loginCSS()}>
       <div className='greeting'>
         <h1 className='header'>You Shall Not Password</h1>
-        <h3 className='header'>{welcomeUser()}</h3>
+        <h2 className={"header " + hideGreeting()}>{welcomeUser()}</h2>
       </div>
 
       <nav>
-        <li className='header'>
-          <Link to='/'>Home</Link>
-        </li>
-        <li className='header'>
-          <Link to='/about'>About</Link>
-        </li>
-        <li className='header'>
-          <Link to='/' onClick={(e) => handleNavLoginLogout(e)}>
-            {logStatus()}
-          </Link>
-        </li>
+        <ul className='nav'>
+          <li className='header'>
+            <Link to='/'>Home</Link>
+          </li>
+          <li className='header'>
+            <Link to='/about'>About</Link>
+          </li>
+          <li className='header'>
+            <Link to='/' onClick={(e) => handleNavLoginLogout(e)}>
+              {logStatus()}
+            </Link>
+          </li>
+        </ul>
       </nav>
     </header>
   );
