@@ -2,6 +2,8 @@
 
 This is a client for a new app that helps users to keep track of passwords. The passwords stored through the app are encrpypted for security.
 
+For information on the server-side API, click [here](https://github.com/gregjohle/you-shall-not-pass-api#readme)
+
 ## Documentation
 
 ### Landing Page
